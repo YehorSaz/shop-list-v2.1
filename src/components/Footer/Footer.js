@@ -99,7 +99,7 @@ const Footer = () => {
                         // dispatch(purchaseActions.changeTrigger())
                         timeOut = setTimeout(() => {
                             speech(dispatch)
-                        }, 1000)
+                        }, 500)
                     }}
                     onTouchEnd={() => {
                         clearTimeout(timeOut)
