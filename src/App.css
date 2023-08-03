@@ -97,7 +97,7 @@ body {
 
 .Footer {
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     background: linear-gradient(24deg, #094F8A 0%, #CDC789 100%);
     display: flex;
 }
@@ -145,7 +145,7 @@ body {
 }
 
 .icon__add {
-    margin: auto;
+    margin: auto auto 25% auto;
     color: #11480f;
 }
 .icon__close {
@@ -160,7 +160,7 @@ body {
     width: 50%;
     height: 6vh;
     position: absolute;
-    bottom: 48%;
+    bottom: 45%;
     left: 25%;
     border: none;
     border-radius: 10px;
@@ -203,7 +203,7 @@ body {
     width: 6vh;
     height: 6vh;
     position: absolute;
-    bottom: 48%;
+    bottom: 45%;
     left: 80%;
     border: none;
     border-radius: 25px;

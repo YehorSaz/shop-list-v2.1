@@ -87,7 +87,7 @@ const Footer = () => {
             </button>
 
 
-            <IconContext.Provider value={{className: 'icon__add', size: 40}}>
+            <IconContext.Provider value={{className: 'icon__add', size: 60}}>
 
                 <TfiMicrophone
                     onTouchStart={() => {
