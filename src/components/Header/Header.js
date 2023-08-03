@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import {IconContext} from "react-icons";
 import {AiOutlineMenuFold} from "react-icons/ai";
+
 import {Menu} from "../Menu/Menu";
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
     return (
 
         <div className={'header'}>
-            <h2>Name of list</h2>
+            <h2>Shop list </h2>
             <IconContext.Provider value={{className: 'icon__menu', size: 50}}>
 
                 <AiOutlineMenuFold onClick={() => setMenuActive(!menuActive)}/>

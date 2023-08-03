@@ -10,6 +10,8 @@ const speech = (dispatch) => {
     recognition = new SpeechRecognition();
     recognition.lang = 'uk-UA';
     recognition.interimResults = true;
+
+
     recognition.start();
 
     recognition.onresult = (event) => {
@@ -25,7 +27,9 @@ const speech = (dispatch) => {
             dispatch(purchaseActions.setPurchase(newPurchase))
 
         }
-        recognition.stop()
+    }
+    recognition.onspeechend = function () {
+        recognition.stop();
     }
 
 };

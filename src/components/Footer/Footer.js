@@ -1,22 +1,21 @@
 import React, {useState} from 'react';
+import {v4 as uuidv4} from "uuid";
 
 import {IconContext} from "react-icons";
 import {FcAddDatabase} from "react-icons/fc";
 import {TfiMicrophone} from "react-icons/tfi";
-import {v4 as uuidv4} from "uuid";
+import {IoMdClose} from "react-icons/io";
+
 import {useDispatch, useSelector} from "react-redux";
 import {purchaseActions} from "../../redux/slices";
-import {IoMdClose} from "react-icons/io";
+
 import {speech} from "../../speech";
 
 const Footer = () => {
 
     const dispatch = useDispatch();
     const {purchaseForEdit, trigger} = useSelector(state => state.purchases);
-    const [inputActive, setInputActive] = useState(false);
     const [purchase, setPurchase] = useState('');
-    console.log(inputActive, '-------------')
-
 
 
     const newPurchase = () => {
@@ -39,7 +38,7 @@ const Footer = () => {
                 clear();
                 setPurchase('');
                 dispatch(purchaseActions.setPurchaseForEdit(''))
-                setInputActive(!inputActive)
+                dispatch(purchaseActions.changeTrigger())
             } else {
                 return []
             }
@@ -61,14 +60,13 @@ const Footer = () => {
         <div className={'Footer'}>
 
             <textarea
-                type="text"
                 id={'text__area'}
-                className={inputActive ? 'input__item' : 'input__item__hidden'}
+                className={trigger ? 'input__item' : 'input__item__hidden'}
                 onChange={(e) => setPurchase(e.target.value)}
             />
 
             <button
-                className={inputActive ? 'enter__button' : 'enter__button__hidden'}
+                className={trigger ? 'enter__button' : 'enter__button__hidden'}
                 onClick={newPurchase}
             >
                 зберегти
@@ -76,9 +74,9 @@ const Footer = () => {
 
             <button
                 id={'closeButton'}
-                className={inputActive ? 'close__button' : 'close__button__hidden'}
+                className={trigger ? 'close__button' : 'close__button__hidden'}
                 onClick={() => {
-                    setInputActive(!inputActive)
+                    dispatch(purchaseActions.changeTrigger())
                     clear()
                 }
                 }
@@ -93,7 +91,12 @@ const Footer = () => {
 
                 <TfiMicrophone
                     onTouchStart={() => {
-                        setInputActive(!inputActive)
+                        window.oncontextmenu = function (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            return false;
+                        }
+                        // dispatch(purchaseActions.changeTrigger())
                         timeOut = setTimeout(() => {
                             speech(dispatch)
                         }, 1000)
@@ -107,7 +110,7 @@ const Footer = () => {
                 <FcAddDatabase
 
                     className={'icon__add__plus'} onClick={() =>
-                    setInputActive(!inputActive)
+                    dispatch(purchaseActions.changeTrigger())
                 }/>
 
             </IconContext.Provider>

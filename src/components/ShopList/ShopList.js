@@ -1,9 +1,9 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import Purchase from "../purchase/Purchase";
 import {purchaseActions} from "../../redux/slices";
 import {FcDeleteRow, FcEditImage} from "react-icons/fc";
 import {IconContext} from "react-icons";
+import {Purchase} from "../purchase/Purchase";
 
 const ShopList = () => {
 
@@ -42,7 +42,6 @@ const ShopList = () => {
                                 <IconContext.Provider
                                     value={{className: 'edit__icons__inner', size: 35}}>
 
-                                    {/*<FcEditImage/>*/}
 
                                     <FcDeleteRow
                                         onClick={() => dispatch(purchaseActions.deleteDonePurchase(donePurchase.id))}

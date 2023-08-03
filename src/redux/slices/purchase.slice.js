@@ -37,14 +37,14 @@ const slice = createSlice({
             const purchaseIndex = state.donePurchases.findIndex(item => item.id === id)
             state.donePurchases.splice(purchaseIndex, 1)
         },
-        deleteAllPurchases: (state, action) => {
+        deleteAllPurchases: (state) => {
             state.purchases = []
             state.donePurchases = []
         },
         setPurchaseForEdit: (state, action) => {
             state.purchaseForEdit = action.payload
         },
-        changeTrigger: (state, action) => {
+        changeTrigger: (state) => {
             state.trigger = !state.trigger
         }
     }

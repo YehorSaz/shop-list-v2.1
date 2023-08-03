@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
+
 import {purchaseActions} from "../../redux/slices";
 
 const Menu = ({active, setActive}) => {
