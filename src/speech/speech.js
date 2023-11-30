@@ -1,6 +1,7 @@
 import {v4 as uuidv4} from "uuid";
 
 import {purchaseActions} from "../redux/slices";
+
 const speech = (dispatch) => {
 
     let SpeechRecognition =
@@ -19,12 +20,15 @@ const speech = (dispatch) => {
         const purchase = event.results[0][0].transcript;
 
         if (event.results[0].isFinal) {
-            const newPurchase = {
-                id: uuidv4(),
-                purchase: purchase.charAt(0).toUpperCase() + purchase.slice(1)
+            const purchaseArr = purchase.split(' ')
+            for (const item of purchaseArr) {
+                const newPurchase = {
+                    id: uuidv4(),
+                    purchase: item
+                }
+                dispatch(purchaseActions.setPurchase(newPurchase))
             }
 
-            dispatch(purchaseActions.setPurchase(newPurchase))
 
         }
     }
