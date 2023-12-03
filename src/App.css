@@ -81,6 +81,7 @@ body {
     padding-left: 10px;
     overflow-x: scroll;
 }
+
 .done__list__inner {
     width: 100%;
     display: flex;
@@ -88,6 +89,7 @@ body {
     padding-right: 10%;
     border-bottom: 1px dotted rgba(245, 222, 179, 0.45);
 }
+
 .edit__done__icons {
     width: 35px;
 }
@@ -151,10 +153,10 @@ body {
     margin-top: 2%;
     color: #11480f;
 }
+
 .icon__close {
     color: #ad4646;
 }
-
 
 
 .micro-multi-add {
@@ -165,6 +167,7 @@ body {
     justify-content: space-around;
     margin-left: -5%;
 }
+
 .micro-multi-add h5 {
     margin-bottom: 10%;
     text-align: center;
@@ -229,6 +232,7 @@ body {
     opacity: 1;
     animation: myAnim4 0.7s ease 0s 1 normal forwards;
 }
+
 @keyframes myAnim4 {
     0% {
         opacity: 0;
@@ -260,8 +264,7 @@ body {
 /*---------Menu component---------*/
 
 
-
-.Menu__hidden{
+.Menu__hidden {
     display: none;
     /*width: 80%;*/
     /*height: 0;*/
@@ -280,7 +283,6 @@ body {
     /*z-index: -1;*/
 
 }
-
 
 
 .Menu__active {
@@ -343,8 +345,128 @@ body {
     /*text-decoration: underline dotted;*/
     border-bottom: 1px dotted #37525e;
 }
+
 .edit__icons {
     width: 30%;
     display: flex;
     justify-content: space-between;
+}
+
+/*-------------VoiceButton------------------*/
+
+.voice-button-hide {
+    display: none;
+}
+
+.mic {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #445779;
+}
+
+.mic::before, .mic::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    z-index: 102;
+    box-shadow: 0 0 20px 20px #467394;
+}
+
+.mic::before {
+    width: 150px;
+    height: 150px;
+    background-color: #4c80a1;
+}
+
+.mic::after {
+    width: 75px;
+    height: 75px;
+    background-color: rgba(117, 176, 194, 0.28);
+    animation: circle-size 0.8s linear infinite alternate;
+}
+
+.mic-icon {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2.5);
+    display: block;
+    width: 16px;
+    height: 12px;
+    border-bottom-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+    border: 2px solid;
+    border-top: 0;
+    margin-top: 10px;
+    z-index: 103;
+}
+
+.mic-icon::before, .mic-icon::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.mic-icon::before {
+    width: 2px;
+    height: 5px;
+    top: calc(100% + 1px);
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #445779;
+}
+
+.mic-icon::after {
+    border: 2px solid;
+    width: 8px;
+    height: 18px;
+    left: 50%;
+    top: -10px;
+    border-radius: 4px;
+    transform: translate(-50%, 0);
+}
+
+/*.mic-shadow {*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    border-radius: 100%;*/
+/*    z-index: 101;*/
+/*    box-shadow:*/
+/*            10px -55px 30px 15px rgb(190, 185, 185),*/
+/*            24px -10px 47px 10px #92a1a0,*/
+/*            -21px -25px 97px 10px rgba(25, 197, 220, 0.76),*/
+/*            51px 5px 17px 10px rgb(153, 168, 167),*/
+/*            3px 2px 77px 10px #1c2828;*/
+/*    animation: shadow-rotate 1.5s linear infinite;*/
+/*    transform-origin: center;*/
+/*}*/
+
+@keyframes circle-size {
+    from {
+        width: 80px;
+        height: 80px;
+    }
+    to {
+        width: 145px;
+        height: 145px;
+    }
+}
+
+@keyframes shadow-rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }

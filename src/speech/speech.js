@@ -28,6 +28,7 @@ const speech = (dispatch, multiInput) => {
                         purchase: item
                     }
                     dispatch(purchaseActions.setPurchase(newPurchase))
+                    document.getElementById('voice-button').classList.add('voice-button-hide')
                 }
             }
             else {
@@ -36,6 +37,7 @@ const speech = (dispatch, multiInput) => {
                     purchase: purchase
                 }
                 dispatch(purchaseActions.setPurchase(newPurchase))
+                document.getElementById('voice-button').classList.add('voice-button-hide')
             }
 
         }

@@ -46,6 +46,10 @@ const Footer = () => {
         }
     }
 
+    const showMicAnim = () => {
+        const voiceButton = document.getElementById('voice-button')
+        voiceButton.classList.remove('voice-button-hide')
+    }
     const clear = () => {
         const elem = document.getElementById('text__area');
         elem.value = '';
@@ -109,6 +113,7 @@ const Footer = () => {
                         }
                         // dispatch(purchaseActions.changeTrigger())
                         timeOut = setTimeout(() => {
+                            showMicAnim()
                             speech(dispatch, false)
                         }, 500)
                     }}
@@ -126,6 +131,7 @@ const Footer = () => {
                          }
                          // dispatch(purchaseActions.changeTrigger())
                          timeOut = setTimeout(() => {
+                             showMicAnim()
                              speech(dispatch, true)
                          }, 500)
                      }}
