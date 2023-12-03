@@ -51,8 +51,11 @@ const Footer = () => {
         voiceButton.classList.remove('voice-button-hide')
     }
     const hideMicAnim = () => {
-        const voiceButton = document.getElementById('voice-button')
-        voiceButton.classList.add('voice-button-hide')
+        setTimeout(() => {
+            const voiceButton = document.getElementById('voice-button')
+            voiceButton.classList.add('voice-button-hide')
+        }, 3000)
+
     }
     const clear = () => {
         const elem = document.getElementById('text__area');
