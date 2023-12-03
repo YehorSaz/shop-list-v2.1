@@ -50,6 +50,10 @@ const Footer = () => {
         const voiceButton = document.getElementById('voice-button')
         voiceButton.classList.remove('voice-button-hide')
     }
+    const hideMicAnim = () => {
+        const voiceButton = document.getElementById('voice-button')
+        voiceButton.classList.add('voice-button-hide')
+    }
     const clear = () => {
         const elem = document.getElementById('text__area');
         elem.value = '';
@@ -120,6 +124,7 @@ const Footer = () => {
                     onTouchEnd={() => {
                         clearTimeout(timeOut)
                         clear()
+                        hideMicAnim()
                     }}
                 />
                 <div className={'micro-multi-add'}
@@ -138,6 +143,7 @@ const Footer = () => {
                      onTouchEnd={() => {
                          clearTimeout(timeOut)
                          clear()
+                         hideMicAnim()
                      }}
                 >
                     <HiMiniMicrophone style={{position: 'relative', top: '10'}}/>
