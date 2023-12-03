@@ -2,7 +2,7 @@ import {v4 as uuidv4} from "uuid";
 
 import {purchaseActions} from "../redux/slices";
 
-const speech = (dispatch) => {
+const speech = (dispatch, multiInput) => {
 
     let SpeechRecognition =
             window.SpeechRecognition || window.webkitSpeechRecognition,
@@ -20,15 +20,23 @@ const speech = (dispatch) => {
         const purchase = event.results[0][0].transcript;
 
         if (event.results[0].isFinal) {
-            const purchaseArr = purchase.split(' ')
-            for (const item of purchaseArr) {
+            if (!multiInput) {
+                const purchaseArr = purchase.split(' ')
+                for (const item of purchaseArr) {
+                    const newPurchase = {
+                        id: uuidv4(),
+                        purchase: item
+                    }
+                    dispatch(purchaseActions.setPurchase(newPurchase))
+                }
+            }
+            else {
                 const newPurchase = {
                     id: uuidv4(),
-                    purchase: item
+                    purchase: purchase
                 }
                 dispatch(purchaseActions.setPurchase(newPurchase))
             }
-
 
         }
     }

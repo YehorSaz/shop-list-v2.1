@@ -4,6 +4,7 @@ import {v4 as uuidv4} from "uuid";
 import {IconContext} from "react-icons";
 import {FcAddDatabase} from "react-icons/fc";
 import {TfiMicrophone} from "react-icons/tfi";
+import { HiMiniMicrophone } from "react-icons/hi2";
 import {IoMdClose} from "react-icons/io";
 
 import {useDispatch, useSelector} from "react-redux";
@@ -35,10 +36,10 @@ const Footer = () => {
                     purchase: capitalizeFirstLetter(purchaseForEdit)
                 }
                 dispatch(purchaseActions.setPurchase(newPurchase));
-                clear();
                 setPurchase('');
                 dispatch(purchaseActions.setPurchaseForEdit(''))
                 dispatch(purchaseActions.changeTrigger())
+                clear();
             } else {
                 return []
             }
@@ -67,7 +68,9 @@ const Footer = () => {
 
             <button
                 className={trigger ? 'enter__button' : 'enter__button__hidden'}
-                onClick={newPurchase}
+                onClick={() => {
+                    newPurchase()
+                }}
             >
                 зберегти
             </button>
@@ -76,8 +79,10 @@ const Footer = () => {
                 id={'closeButton'}
                 className={trigger ? 'close__button' : 'close__button__hidden'}
                 onClick={() => {
-                    dispatch(purchaseActions.changeTrigger())
-                    clear()
+                    newPurchase()
+                    // dispatch(purchaseActions.changeTrigger())
+
+                    // clear()
                 }
                 }
             >
@@ -89,6 +94,12 @@ const Footer = () => {
 
             <IconContext.Provider value={{className: 'icon__add', size: 60}}>
 
+                <FcAddDatabase
+
+                    className={'icon__add__plus'} onClick={() =>
+                    dispatch(purchaseActions.changeTrigger())
+                }/>
+
                 <TfiMicrophone
                     onTouchStart={() => {
                         window.oncontextmenu = function (event) {
@@ -98,7 +109,7 @@ const Footer = () => {
                         }
                         // dispatch(purchaseActions.changeTrigger())
                         timeOut = setTimeout(() => {
-                            speech(dispatch)
+                            speech(dispatch, false)
                         }, 500)
                     }}
                     onTouchEnd={() => {
@@ -106,12 +117,27 @@ const Footer = () => {
                         clear()
                     }}
                 />
+                <div className={'micro-multi-add'}
+                     onTouchStart={() => {
+                         window.oncontextmenu = function (event) {
+                             event.preventDefault();
+                             event.stopPropagation();
+                             return false;
+                         }
+                         // dispatch(purchaseActions.changeTrigger())
+                         timeOut = setTimeout(() => {
+                             speech(dispatch, true)
+                         }, 500)
+                     }}
+                     onTouchEnd={() => {
+                         clearTimeout(timeOut)
+                         clear()
+                     }}
+                >
+                    <HiMiniMicrophone style={{position: 'relative', top: '10'}}/>
+                    <br/><h5>sentence</h5>
+                </div>
 
-                <FcAddDatabase
-
-                    className={'icon__add__plus'} onClick={() =>
-                    dispatch(purchaseActions.changeTrigger())
-                }/>
 
             </IconContext.Provider>
         </div>
