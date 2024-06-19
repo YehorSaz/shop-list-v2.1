@@ -8,7 +8,7 @@ function App() {
 
 
   return (
-    <div className="App"}>
+    <div className={"App"}>
         <Header/>
         <ShopList/>
         <Footer trigger={trigger} setTrigger={setTrigger}/>
