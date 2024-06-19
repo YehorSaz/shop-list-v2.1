@@ -4,6 +4,8 @@ import {useState} from "react";
 
 function App() {
 
+    window.scrollTo(0,1);
+
     const [trigger, setTrigger] = useState(false);
 
   return (
