@@ -4,9 +4,11 @@ import {useState} from "react";
 
 function App() {
 
-    window.scrollTo(0,1);
-
     const [trigger, setTrigger] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, []);
 
   return (
     <div className="App">
