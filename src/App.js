@@ -1,6 +1,6 @@
 import './App.css';
 import {Footer, Header, ShopList} from "./components";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function App() {
 
