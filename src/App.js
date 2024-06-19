@@ -1,15 +1,14 @@
 import './App.css';
 import {Footer, Header, ShopList} from "./components";
-import {useState, useRef} from "react";
+import {useState} from "react";
 
 function App() {
 
     const [trigger, setTrigger] = useState(false);
 
-    const myRef = useRef();
 
   return (
-    <div className="App" ref={myRef.current.scrollTo(0,0)}>
+    <div className="App"}>
         <Header/>
         <ShopList/>
         <Footer trigger={trigger} setTrigger={setTrigger}/>
